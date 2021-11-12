@@ -1,0 +1,92 @@
+using System;
+
+namespace Laboratorka2
+{
+    class Employee
+    {
+        public string name; 
+        public string surname; 
+        public static string HiringDate; 
+        private OperateCost post;
+
+
+        private Employee(string name, string surname, string HiringName, OperateCost post)
+        {
+            this.name = name;
+            this.surname = surname;
+            Employee.HiringDate = HiringDate;
+            this.post = post;
+
+        }
+        public static double DiscoverGrade(string HiringName)
+        {
+            double dateValueForGrade = (DateTime.Now - DateTime.Parse(HiringName)).TotalDays;
+
+            if (dateValueForGrade >= 1500 && dateValueForGrade < 4000)
+                return 1.5;
+            else if (dateValueForGrade >= 4000)
+                return 1.0;
+            else
+                return 2.0;
+        }
+        abstract class OperateCost
+        {
+            public double salary;
+            public double tax;
+
+            public abstract void ApplyBonus(double bonus, double grade);
+            public abstract void ApplyTax();
+        }
+
+        class Slave : OperateCost
+        {
+            public override void ApplyBonus(double bonus, double grade)
+            {
+                salary = (940 + 2 * bonus) * grade;
+            }
+
+            public override void ApplyTax()
+            {
+                tax = salary * 0.20;
+            }
+        }
+
+        class Warden : OperateCost
+        {
+            public override void ApplyBonus(double bonus, double grade)
+            {
+                salary = (94000 + 5 * bonus) * grade;
+            }
+            public override void ApplyTax()
+            {
+                tax = salary * 0.20;
+            }
+        }
+
+        class Lord : OperateCost
+        {
+            public override void ApplyBonus(double bonus, double grade)
+            {
+                salary = (94000 + 10 * bonus) * grade;
+            }
+            public override void ApplyTax()
+            {
+                tax = salary * 0.20;
+            }
+        }
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                OperateCost oc = new Warden();
+                Employee emp = new Employee("Ivan", "Ivanov", "02.07.1993", oc);
+                double grade = Employee.DiscoverGrade("02.08.2000");
+                Console.WriteLine("Имя сотрудника: {0}\nФамилия сотрудника: {1}\nДата найма: {2}\nДолжность: {3}", emp.name, emp.surname, Employee.HiringDate, emp.post);
+                oc.ApplyBonus(20000, grade);
+                oc.ApplyTax();
+                Console.WriteLine("Зарплата: {0}\nНалог: {1}", emp.post.salary, emp.post.tax);
+                Console.ReadKey();
+            }
+        }
+    }
+}
