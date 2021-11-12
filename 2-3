@@ -1,0 +1,99 @@
+using System;
+
+namespace Laboratorka2
+{
+    class Book
+
+    {
+        public class Title
+        {
+
+            public string title;
+
+            public void Show()
+            {
+
+                if (title == "")
+                {
+                    title = "Гарри Поттер";
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"{title}\n\n");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"{title}\n\n");
+                }
+            }
+        }
+
+        public class Author
+        {
+
+            public string author;
+
+            public void Show()
+            {
+
+                if (author == "")
+                {
+                    author = "Джоан Роулинг";
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Автор книги: {author}\n");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Автор книги: {author}\n");
+                }
+            }
+        }
+        public class Content
+        {
+
+            public string content;
+
+            public void Show()
+            {
+                if (content == "")
+                {
+                    content = "Содержимое";
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"Содержмое книги: {content}\n");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"Содержмое книги: {content}\n");
+                    Console.ResetColor();
+                }
+            }
+        }
+    }
+
+    class Program
+
+    {
+        static void Main(string[] args)
+
+        {
+
+            Book.Title t = new Book.Title();
+            Book.Author a = new Book.Author();
+            Book.Content c = new Book.Content();
+
+            Console.WriteLine("Название книги:");
+            t.title = Console.ReadLine();
+            Console.WriteLine("Имя автора:");
+            a.author = Console.ReadLine();
+            Console.WriteLine("Содержимое:");
+            c.content = Console.ReadLine();
+            Console.WriteLine("Книга готова!\n");
+            t.Show();
+            a.Show();
+            c.Show();
+        }
+    }
+
+}
