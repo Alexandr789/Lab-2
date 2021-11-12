@@ -1,0 +1,57 @@
+using System;
+
+namespace Laboratorka2
+{
+    class User
+
+    {
+
+        public string login; 
+
+        public string name;     
+
+        public string surname;     
+
+        public string age;     
+
+        private DateTime date = DateTime.Today;
+
+
+
+
+
+        public void GetInfo()
+
+        {
+            Console.WriteLine($"login: {login} \nname: {name} \nsurname: {surname} \nage: {age} \ndate of registrarion: {date.ToString("D")}\n");
+
+        }
+
+    }
+
+    class Program
+
+    {
+
+        static void Main(string[] args)
+
+        {
+
+            User user = new User();
+
+            user.login = "aleksandrbilokur80@gmail.com";
+
+            user.name = "Alexandr";
+
+            user.surname = "Bilokur";
+
+            user.age = "18";
+
+            user.GetInfo();
+
+            Console.ReadKey();
+
+        }
+
+    }
+}
