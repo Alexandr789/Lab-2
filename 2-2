@@ -1,0 +1,68 @@
+using System;
+
+namespace Laboratorka2
+{
+    class Rectangle
+
+    {
+
+        public double side1;
+
+        public double side2;
+
+        public Rectangle(double s1, double s2) { side1 = s1; side2 = s2; }
+
+        public void AreaCalculator()
+        {
+            double Ploschad = side1 * side2;
+            Console.WriteLine($"Площадь = {Ploschad}");
+        }
+
+        public void PeriemetrCalculator()
+
+        {
+            double Perimetr = (side1 + side2) * 2;
+            Console.WriteLine($"Периметр = {Perimetr}");
+        }
+
+
+        class Program
+
+        {
+            static double s1;
+
+            static double s2;
+
+
+
+            static void Main(string[] args)
+
+            {
+                Console.WriteLine("Укажите длину первой стороны:");
+                s1 = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Укажите длину второй стороны:");
+                s2 = Convert.ToDouble(Console.ReadLine());
+
+                Type t1 = s1.GetType();
+                Type t2 = s2.GetType();
+
+                if (t1.Equals(typeof(double)) & t2.Equals(typeof(double)))
+                {
+                    Rectangle sqare = new Rectangle(s1, s2);
+
+                    sqare.AreaCalculator();
+
+                    sqare.PeriemetrCalculator();
+                    Console.ReadKey();
+
+                }
+                else
+                {
+                    Console.WriteLine("Тип не совпадает.");
+
+                }
+
+            }
+        }
+    }
+}
